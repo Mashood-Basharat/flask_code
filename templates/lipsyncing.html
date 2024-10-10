@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Inputs</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Step 2: Select inputs</h1>
+        <p>Enter the paths of the video and vocal files:</p>
+        <label for="video-file">Video File:</label>
+        <input type="text" id="video-file" placeholder="/content/download (1).mp4">
+        <label for="vocal-file">Vocal File (optional):</label>
+        <input type="text" id="vocal-file" placeholder="/content/audio_4.mp3">
+        
+        <h2>Quality Options:</h2>
+        <label for="quality">Choose Quality:</label>
+        <select id="quality">
+            <option value="Fast">Fast</option>
+            <option value="Improved">Improved</option>
+            <option value="Enhanced" selected>Enhanced</option>
+        </select>
+        
+        <button id="process-btn" class="btn-primary" onclick="window.location.href='{{ url_for('result') }}' ">Process Inputs</button>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+</body>
+</html>
