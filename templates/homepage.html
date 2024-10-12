@@ -6,13 +6,19 @@
 
     <h1>Step 1: Setup SyncKing-Kong</h1>
     <p>With one button: it's really that easy!</p>
+    
     <form method="post" action="/">
         <button type="submit" class="btn-primary">Start SyncKing-Kong Setup</button> 
     </form>
-    <p>👈 This will setup the environment and install the requirements to perform lip syncing.</p>
     
+    <p>👈 This will setup the environment and install the requirements to perform lip syncing.</p>
+
+    <!-- Anchor link to upload.html -->
+    <p>After setup, proceed to the next step:</p>
+    <a href="{{ url_for('upload_media') }}" class="btn-secondary">Go to Upload Page</a>
+
     {% if message %}
         <div class="message">{{ message }}</div>
     {% endif %}
-    
+
 {% endblock %}
