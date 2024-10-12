@@ -1,26 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SyncKing-Kong Setup</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Step 1: Setup SyncKing-Kong</h1>
-        <p>With one button: it's really that easy!</p>
-        <form method="post" action="/">
-            <button type="submit" class="btn-primary">Start SyncKing-Kong Setup</button> 
-        </form>
-        <p>👈 This will setup the environment and install the requirements to perform lip syncing.</p>
-        
-        {% if message %}
-            <div class="message">{{ message }}</div>
-        {% endif %}
-    </div>
+{% extends 'base.html' %}
 
-    <script src="/static/js/script.js"></script>
-</body>
-</html>
+{% block title %}Setup SyncKing-Kong{% endblock %}
 
+{% block content %}
+
+    <h1>Step 1: Setup SyncKing-Kong</h1>
+    <p>With one button: it's really that easy!</p>
+    <form method="post" action="/">
+        <button type="submit" class="btn-primary">Start SyncKing-Kong Setup</button> 
+    </form>
+    <p>👈 This will setup the environment and install the requirements to perform lip syncing.</p>
+    
+    {% if message %}
+        <div class="message">{{ message }}</div>
+    {% endif %}
+    
+{% endblock %}
