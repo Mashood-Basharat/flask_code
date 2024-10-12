@@ -10,7 +10,7 @@
     <form method="POST" action="{{ url_for('upload_media') }}" enctype="multipart/form-data">
         <div class="upload-section">
             <h2>Upload Video</h2>
-            <input type="file" name="video" accept="video/mp4" required>
+            <input type="file" name="video" accept="video/mpeg" required>
         </div>
         <div class="upload-section">
             <h2>Upload Audio</h2>
@@ -24,5 +24,5 @@
             <div class="message">{{ message }}</div>
         {% endif %}
     </div>
-    
+
 {% endblock %}
