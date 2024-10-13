@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Lip-syncing Setup{% endblock %}
+
+{% block content %}
+
+<h1>Step 2: Select inputs</h1>
+<form method="POST" action="{{ url_for('lipsyncing', video_file=video_file, audio_file=audio_file) }}">
+    <label for="video_file">Video File:</label>
+    <input type="text" name="video_file" value="{{ video_file }}" readonly>
+
+    <label for="audio_file">Audio File (optional):</label>
+    <input type="text" name="audio_file" value="{{ audio_file }}" readonly>
+
+    <label for="quality">Quality:</label>
+    <select name="quality">
+        <option value="Fast">Fast</option>
+        <option value="Improved">Improved</option>
+        <option value="Enhanced">Enhanced</option>
+    </select>
+
+    <label for="output_height">Output Height:</label>
+    <select name="output_height">
+        <option value="half resolution">Half resolution</option>
+        <option value="full resolution">Full resolution</option>
+        <option value="480">480</option>
+    </select>
+
+    <label for="use_previous_tracking_data">Use Previous Tracking Data:</label>
+    <input type="checkbox" name="use_previous_tracking_data">
+
+    <label for="wav2lip_version">Wav2Lip Version:</label>
+    <select name="wav2lip_version">
+        <option value="Wav2Lip">Wav2Lip</option>
+        <option value="Wav2Lip_GAN">Wav2Lip_GAN</option>
+    </select>
+
+    <label for="nosmooth">No Smoothing:</label>
+    <input type="checkbox" name="nosmooth">
+
+    <!-- Padding -->
+    <label for="U">Padding Up:</label>
+    <input type="range" name="U" min="-100" max="100" step="1">
+    <label for="D">Padding Down:</label>
+    <input type="range" name="D" min="-100" max="100" step="1">
+    <label for="L">Padding Left:</label>
+    <input type="range" name="L" min="-100" max="100" step="1">
+    <label for="R">Padding Right:</label>
+    <input type="range" name="R" min="-100" max="100" step="1">
+
+    <label for="size">Mask Size:</label>
+    <input type="range" name="size" min="1" max="6" step="0.1">
+
+    <label for="feathering">Feathering:</label>
+    <input type="range" name="feathering" min="0" max="3" step="1">
+
+    <label for="mouth_tracking">Mouth Tracking:</label>
+    <input type="checkbox" name="mouth_tracking">
+
+    <label for="debug_mask">Debug Mask:</label>
+    <input type="checkbox" name="debug_mask">
+
+    <button type="submit" class="btn-primary">Start Lip-syncing</button>
+</form>
+
+{% if message %}
+    <div class="message">{{ message }}</div>
+{% endif %}
+
+{% endblock %}

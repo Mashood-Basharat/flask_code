@@ -14,7 +14,7 @@
         </div>
         <div class="upload-section">
             <h2>Upload Audio</h2>
-            <input type="file" name="audio" accept="audio/mpeg, audio/mp3" required>
+            <input type="file" name="audio" accept="audio/mpeg, audio/mp3">
         </div>
         <input type="submit" value="Upload" class="btn-primary">
     </form>
@@ -22,6 +22,14 @@
     <div id="message">
         {% if message %}
             <div class="message">{{ message }}</div>
+            <!-- After successful upload, redirect to /lipsyncing with file paths -->
+            {% if message == "Files uploaded successfully!" %}
+                <script>
+                    const videoFile = "{{ video_file }}";
+                    const audioFile = "{{ audio_file }}";
+                    window.location.href = "{{ url_for('lipsyncing') }}?video_file=" + encodeURIComponent(videoFile) + "&audio_file=" + encodeURIComponent(audioFile);
+                </script>
+            {% endif %}
         {% endif %}
     </div>
 
