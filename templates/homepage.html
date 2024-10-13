@@ -15,10 +15,12 @@
 
     <!-- Anchor link to upload.html -->
     <p>After setup, proceed to the next step:</p>
-    <a href="{{ url_for('upload_media') }}" class="btn-secondary">Go to Upload Page</a>
 
     {% if message %}
         <div class="message">{{ message }}</div>
     {% endif %}
+    
+    <a href="{{ url_for('upload_media') }}" class="btn-secondary">Go to Upload Page</a>
+
 
 {% endblock %}
