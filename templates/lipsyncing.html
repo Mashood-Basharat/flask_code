@@ -13,14 +13,14 @@
     <input type="text" name="audio_file" value="{{ audio_file }}" readonly>
 
     <label for="quality">Quality:</label>
-    <select name="quality" required>
+    <select name="quality">
         <option value="Fast">Fast</option>
         <option value="Improved">Improved</option>
         <option value="Enhanced">Enhanced</option>
     </select>
 
     <label for="output_height">Output Height:</label>
-    <select name="output_height" required>
+    <select name="output_height">
         <option value="half resolution">Half resolution</option>
         <option value="full resolution">Full resolution</option>
         <option value="480">480</option>
@@ -30,7 +30,7 @@
     <input type="checkbox" name="use_previous_tracking_data">
 
     <label for="wav2lip_version">Wav2Lip Version:</label>
-    <select name="wav2lip_version" required>
+    <select name="wav2lip_version">
         <option value="Wav2Lip">Wav2Lip</option>
         <option value="Wav2Lip_GAN">Wav2Lip_GAN</option>
     </select>
@@ -40,19 +40,19 @@
 
     <!-- Padding -->
     <label for="U">Padding Up:</label>
-    <input type="range" name="U" min="-100" max="100" step="1" value="0">
+    <input type="range" name="U" min="-100" max="100" step="1">
     <label for="D">Padding Down:</label>
-    <input type="range" name="D" min="-100" max="100" step="1" value="0">
+    <input type="range" name="D" min="-100" max="100" step="1">
     <label for="L">Padding Left:</label>
-    <input type="range" name="L" min="-100" max="100" step="1" value="0">
+    <input type="range" name="L" min="-100" max="100" step="1">
     <label for="R">Padding Right:</label>
-    <input type="range" name="R" min="-100" max="100" step="1" value="0">
+    <input type="range" name="R" min="-100" max="100" step="1">
 
     <label for="size">Mask Size:</label>
-    <input type="range" name="size" min="1" max="6" step="0.1" value="1.0">
+    <input type="range" name="size" min="1" max="6" step="0.1">
 
     <label for="feathering">Feathering:</label>
-    <input type="range" name="feathering" min="0" max="3" step="1" value="0">
+    <input type="range" name="feathering" min="0" max="3" step="1">
 
     <label for="mouth_tracking">Mouth Tracking:</label>
     <input type="checkbox" name="mouth_tracking">
@@ -60,15 +60,15 @@
     <label for="debug_mask">Debug Mask:</label>
     <input type="checkbox" name="debug_mask">
 
-    <!-- Frame to Preview -->
-    <label for="frame_to_preview">Frame to Preview (Optional):</label>
-    <input type="number" name="frame_to_preview" min="0" value="0">
-
     <button type="submit" class="btn-primary">Start Lip-syncing</button>
 </form>
 
 {% if message %}
     <div class="message">{{ message }}</div>
+{% endif %}
+
+{% if error %}
+    <div class="error">{{ error }}</div>
 {% endif %}
 
 {% endblock %}
