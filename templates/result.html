@@ -1,17 +1,22 @@
 {% extends 'base.html' %}
 
-{% block title %}Results{% endblock %}
+{% block title %}Lip-syncing Result{% endblock %}
 
 {% block content %}
+<h1>Lip-syncing Complete</h1>
 
-    <h1>Results</h1>
-    <p>Your video has been processed. Here is a preview of the output:</p>
-    
-    <video id="output-video" controls>
-        <source src="/static/output/output.mp4" type="video/mp4">
+{% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+{% else %}
+    <p>Your lip-synced video is ready! You can view it below:</p>
+
+    <video controls>
+        <source src="{{ url_for('static', filename=output_file) }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
-    
-    <button id="download-btn" class="btn-primary">Download Processed Video</button>
-    
+
+    <br><br>
+    <a href="{{ url_for('upload') }}" class="btn btn-primary">Go back to upload new video/audio</a>
+{% endif %}
 {% endblock %}
+
