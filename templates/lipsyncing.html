@@ -71,4 +71,13 @@
     <div class="error">{{ error }}</div>
 {% endif %}
 
+<!-- Add a video player to show the result if it's available -->
+{% if result_video %}
+    <h2>Lip-synced Video Result:</h2>
+    <video controls>
+        <source src="{{ result_video }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+{% endif %}
+
 {% endblock %}
