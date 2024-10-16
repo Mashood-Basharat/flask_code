@@ -6,78 +6,108 @@
 
 <h1>Step 2: Select inputs</h1>
 <form method="POST" action="{{ url_for('lipsyncing', video_file=video_file, audio_file=audio_file) }}">
-    <label for="video_file">Video File:</label>
-    <input type="text" name="video_file" value="{{ video_file }}" readonly>
+    <div class="form-group">
+        <label for="video_file">Video File:</label>
+        <input type="text" name="video_file" value="{{ video_file }}" readonly class="form-control">
+    </div>
 
-    <label for="audio_file">Audio File (optional):</label>
-    <input type="text" name="audio_file" value="{{ audio_file }}" readonly>
+    <div class="form-group">
+        <label for="audio_file">Audio File (optional):</label>
+        <input type="text" name="audio_file" value="{{ audio_file }}" readonly class="form-control">
+    </div>
 
-    <label for="quality">Quality:</label>
-    <select name="quality">
-        <option value="Fast">Fast</option>
-        <option value="Improved">Improved</option>
-        <option value="Enhanced">Enhanced</option>
-    </select>
+    <div class="form-group">
+        <label for="quality">Quality:</label>
+        <select name="quality" class="form-control">
+            <option value="Fast">Fast</option>
+            <option value="Improved">Improved</option>
+            <option value="Enhanced">Enhanced</option>
+        </select>
+    </div>
 
-    <label for="output_height">Output Height:</label>
-    <select name="output_height">
-        <option value="half resolution">Half resolution</option>
-        <option value="full resolution">Full resolution</option>
-        <option value="480">480</option>
-    </select>
+    <div class="form-group">
+        <label for="output_height">Output Height:</label>
+        <select name="output_height" class="form-control">
+            <option value="half resolution">Half resolution</option>
+            <option value="full resolution">Full resolution</option>
+            <option value="480">480</option>
+        </select>
+    </div>
 
-    <label for="use_previous_tracking_data">Use Previous Tracking Data:</label>
-    <input type="checkbox" name="use_previous_tracking_data">
+    <div class="form-check">
+        <label for="use_previous_tracking_data">Use Previous Tracking Data:</label>
+        <input type="checkbox" name="use_previous_tracking_data" class="form-check-input">
+    </div>
 
-    <label for="wav2lip_version">Wav2Lip Version:</label>
-    <select name="wav2lip_version">
-        <option value="Wav2Lip">Wav2Lip</option>
-        <option value="Wav2Lip_GAN">Wav2Lip_GAN</option>
-    </select>
+    <div class="form-group">
+        <label for="wav2lip_version">Wav2Lip Version:</label>
+        <select name="wav2lip_version" class="form-control">
+            <option value="Wav2Lip">Wav2Lip</option>
+            <option value="Wav2Lip_GAN">Wav2Lip_GAN</option>
+        </select>
+    </div>
 
-    <label for="nosmooth">No Smoothing:</label>
-    <input type="checkbox" name="nosmooth">
+    <div class="form-check">
+        <label for="nosmooth">No Smoothing:</label>
+        <input type="checkbox" name="nosmooth" class="form-check-input">
+    </div>
 
-    <!-- Padding -->
-    <label for="U">Padding Up:</label>
-    <input type="range" name="U" min="-100" max="100" step="1">
-    <label for="D">Padding Down:</label>
-    <input type="range" name="D" min="-100" max="100" step="1">
-    <label for="L">Padding Left:</label>
-    <input type="range" name="L" min="-100" max="100" step="1">
-    <label for="R">Padding Right:</label>
-    <input type="range" name="R" min="-100" max="100" step="1">
+    <!-- Padding settings -->
+    <h3>Padding Settings</h3>
 
-    <label for="size">Mask Size:</label>
-    <input type="range" name="size" min="1" max="6" step="0.1">
+    <div class="form-group">
+        <label for="U">Padding Up:</label>
+        <input type="range" name="U" min="-100" max="100" step="1" class="form-range">
+    </div>
+    
+    <div class="form-group">
+        <label for="D">Padding Down:</label>
+        <input type="range" name="D" min="-100" max="100" step="1" class="form-range">
+    </div>
 
-    <label for="feathering">Feathering:</label>
-    <input type="range" name="feathering" min="0" max="3" step="1">
+    <div class="form-group">
+        <label for="L">Padding Left:</label>
+        <input type="range" name="L" min="-100" max="100" step="1" class="form-range">
+    </div>
 
-    <label for="mouth_tracking">Mouth Tracking:</label>
-    <input type="checkbox" name="mouth_tracking">
+    <div class="form-group">
+        <label for="R">Padding Right:</label>
+        <input type="range" name="R" min="-100" max="100" step="1" class="form-range">
+    </div>
 
-    <label for="debug_mask">Debug Mask:</label>
-    <input type="checkbox" name="debug_mask">
+    <!-- Masking settings -->
+    <h3>Mask Settings</h3>
 
-    <button type="submit" class="btn-primary">Start Lip-syncing</button>
+    <div class="form-group">
+        <label for="size">Mask Size:</label>
+        <input type="range" name="size" min="1" max="6" step="0.1" class="form-range">
+    </div>
+
+    <div class="form-group">
+        <label for="feathering">Feathering:</label>
+        <input type="range" name="feathering" min="0" max="3" step="1" class="form-range">
+    </div>
+
+    <div class="form-check">
+        <label for="mouth_tracking">Mouth Tracking:</label>
+        <input type="checkbox" name="mouth_tracking" class="form-check-input">
+    </div>
+
+    <div class="form-check">
+        <label for="debug_mask">Debug Mask:</label>
+        <input type="checkbox" name="debug_mask" class="form-check-input">
+    </div>
+
+    <!-- Submit button -->
+    <button type="submit" class="btn btn-primary mt-3">Start Lip-syncing</button>
 </form>
 
 {% if message %}
-    <div class="message">{{ message }}</div>
+    <div class="alert alert-success mt-3">{{ message }}</div>
 {% endif %}
 
 {% if error %}
-    <div class="error">{{ error }}</div>
-{% endif %}
-
-<!-- Add a video player to show the result if it's available -->
-{% if result_video %}
-    <h2>Lip-synced Video Result:</h2>
-    <video controls>
-        <source src="{{ result_video }}" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
+    <div class="alert alert-danger mt-3">{{ error }}</div>
 {% endif %}
 
 {% endblock %}

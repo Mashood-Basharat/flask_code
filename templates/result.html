@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Lip-synced Video Result{% endblock %}
+
+{% block content %}
+<h2>Your Lip-synced Video</h2>
+<video controls>
+    <!-- Use the dynamically passed video filename -->
+    <source src="{{ url_for('static', filename=video_filename) }}" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+
+<a href="{{ url_for('lipsyncing') }}" class="btn btn-primary">Back to Lip-syncing</a>
+
+{% endblock %}
