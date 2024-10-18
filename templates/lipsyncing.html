@@ -102,6 +102,24 @@
     <button type="submit" class="btn btn-primary mt-3">Start Lip-syncing</button>
 </form>
 
+
+<!-- JavaScript to display range values dynamically -->
+<script>
+    const ranges = ['U', 'D', 'L', 'R', 'size', 'feathering'];
+    ranges.forEach(id => {
+        const slider = document.getElementById(id);
+        const display = document.getElementById(`${id}_val`);
+        if (slider && display) {
+            slider.addEventListener('input', () => {
+                display.textContent = slider.value;
+            });
+            // Initialize display
+            display.textContent = slider.value;
+        }
+    });
+</script>
+
+
 {% if message %}
     <div class="alert alert-success mt-3">{{ message }}</div>
 {% endif %}
