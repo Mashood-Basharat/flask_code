@@ -53,40 +53,46 @@
     </div>
 
     <!-- Padding settings -->
-    <h3>Padding Settings</h3>
+<h3>Padding Settings</h3>
 
-    <div class="form-group">
-        <label for="U">Padding Up:</label>
-        <input type="range" name="U" min="-100" max="100" step="1" class="form-range">
-    </div>
-    
-    <div class="form-group">
-        <label for="D">Padding Down:</label>
-        <input type="range" name="D" min="-100" max="100" step="1" class="form-range">
-    </div>
+<div class="form-group">
+    <label for="U">Padding Up:</label>
+    <input type="range" id="U" name="U" value="-5" min="-100" max="100" step="1" class="form-range">
+    <span id="U_val">-5</span>
+</div>
 
-    <div class="form-group">
-        <label for="L">Padding Left:</label>
-        <input type="range" name="L" min="-100" max="100" step="1" class="form-range">
-    </div>
+<div class="form-group">
+    <label for="D">Padding Down:</label>
+    <input type="range" id="D" name="D" value="10" min="-100" max="100" step="1" class="form-range">
+    <span id="D_val">10</span>
+</div>
 
-    <div class="form-group">
-        <label for="R">Padding Right:</label>
-        <input type="range" name="R" min="-100" max="100" step="1" class="form-range">
-    </div>
+<div class="form-group">
+    <label for="L">Padding Left:</label>
+    <input type="range" id="L" name="L" value="0" min="-100" max="100" step="1" class="form-range">
+    <span id="L_val">0</span>
+</div>
 
-    <!-- Masking settings -->
-    <h3>Mask Settings</h3>
+<div class="form-group">
+    <label for="R">Padding Right:</label>
+    <input type="range" id="R" name="R" value="15" min="-100" max="100" step="1" class="form-range">
+    <span id="R_val">15</span>
+</div>
 
-    <div class="form-group">
-        <label for="size">Mask Size:</label>
-        <input type="range" name="size" min="1" max="6" step="0.1" class="form-range">
-    </div>
+<!-- Masking settings -->
+<h3>Mask Settings</h3>
 
-    <div class="form-group">
-        <label for="feathering">Feathering:</label>
-        <input type="range" name="feathering" min="0" max="3" step="1" class="form-range">
-    </div>
+<div class="form-group">
+    <label for="size">Mask Size:</label>
+    <input type="range" id="size" name="size" value="5" min="1" max="6" step="1" class="form-range">
+    <span id="size_val">5</span>
+</div>
+
+<div class="form-group">
+    <label for="feathering">Feathering:</label>
+    <input type="range" id="feathering" name="feathering" value="3" min="0" max="3" step="1" class="form-range">
+    <span id="feathering_val">3</span>
+</div>
 
     <div class="form-check">
         <label for="mouth_tracking">Mouth Tracking:</label>
@@ -101,6 +107,14 @@
     <!-- Submit button -->
     <button type="submit" class="btn btn-primary mt-3">Start Lip-syncing</button>
 </form>
+
+{% if message %}
+    <div class="alert alert-success mt-3">{{ message }}</div>
+{% endif %}
+
+{% if error %}
+    <div class="alert alert-danger mt-3">{{ error }}</div>
+{% endif %}
 
 
 <!-- JavaScript to display range values dynamically -->
@@ -119,13 +133,5 @@
     });
 </script>
 
-
-{% if message %}
-    <div class="alert alert-success mt-3">{{ message }}</div>
-{% endif %}
-
-{% if error %}
-    <div class="alert alert-danger mt-3">{{ error }}</div>
-{% endif %}
 
 {% endblock %}
