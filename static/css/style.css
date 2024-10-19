@@ -63,3 +63,25 @@ video {
 label {
     font-weight: bold;
 }
+
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.form-group label {
+    width: 150px; /* Adjust width as needed */
+}
+
+.form-group input[type="range"] {
+    flex-grow: 1;
+    margin: 0 10px; /* Space between range and number */
+}
+
+.form-group span {
+    width: 40px; /* Adjust width for the displayed value */
+    text-align: right;
+}
+
