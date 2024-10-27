@@ -1,22 +1,17 @@
-/* Reset and box sizing */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Full viewport coverage for html and body */
-html, body {
-    height: 100%;
+body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     color: #333;
 }
 
-/* Centered and responsive container */
 .container {
-    max-width: 1200px; /* Increased width for larger viewports */
-    width: 90%; /* Allows flexibility on smaller screens */
+    max-width: 900px;
     margin: 20px auto;
     padding: 20px;
     background-color: white;
@@ -24,16 +19,6 @@ html, body {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure the main content covers the viewport height */
-.main-content {
-    min-height: calc(100vh - 40px); /* Adjust for top and bottom margin */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Heading and text styling */
 h1 {
     font-size: 2em;
     margin-bottom: 20px;
@@ -45,7 +30,6 @@ p {
     line-height: 1.5;
 }
 
-/* Input, select, and button styling */
 input, select {
     width: 100%;
     padding: 10px;
@@ -70,10 +54,16 @@ input, select {
     background-color: #0056b3;
 }
 
-/* Label and form group styling */
+/* video {
+    width: 100%;
+    height: auto;
+    margin: 20px 0;
+} */
+
 label {
     font-weight: bold;
 }
+
 
 .form-group {
     display: flex;
@@ -82,15 +72,16 @@ label {
 }
 
 .form-group label {
-    width: 150px;
+    width: 150px; /* Adjust width as needed */
 }
 
 .form-group input[type="range"] {
     flex-grow: 1;
-    margin: 0 10px;
+    margin: 0 10px; /* Space between range and number */
 }
 
 .form-group span {
-    width: 40px;
+    width: 40px; /* Adjust width for the displayed value */
     text-align: right;
 }
+
