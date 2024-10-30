@@ -8,15 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Welcome to SyncKing-Kong</h1>
-        </header>
-
-
+        {% if show_header %}
+            <header>
+                <h1>Welcome to SyncKing-Kong</h1>
+            </header>
+        {% endif %}
+    
         {% block content %}
-        
         {% endblock %}
-
     </div>
 
     <script src="/static/js/script.js"></script>
