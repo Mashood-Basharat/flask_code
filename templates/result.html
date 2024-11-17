@@ -3,13 +3,28 @@
 {% block title %}Lip-synced Video Result{% endblock %}
 
 {% block content %}
-<h2>Your Lip-synced Video</h2>
-<video width="520" height="450" controls>
-    <!-- Use the dynamically passed video filename -->
-    <source src="{{ url_for('static', filename='output.mp4') }}" type="video/mp4">
-    Your browser does not support the video tag.
-</video>
+<div class="result">
+    <div class="container">
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-10">
+                <div>
+                    <h2 style="margin-bottom: 20px;">Your Lip-synced Video</h2>
+                    <video width="520" height="450" controls>
+                        <!-- Use the dynamically passed video filename -->
+                        <source src="{{ url_for('static', filename='output.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div style="margin-top: 40px;">
+                        <a href="{{ url_for('lipsyncing') }}" class="btn btn-primary">Back to Lip-syncing</a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </div>
+</div>
 
-<a href="{{ url_for('lipsyncing') }}" class="btn btn-primary">Back to Lip-syncing</a>
 
 {% endblock %}
