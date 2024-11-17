@@ -3,21 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
     <title>{% block title %}SyncKing-Kong{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/responsive.css">
 </head>
 <body>
-    <div class="container">
-        {% if show_header %}
-            <header>
-                <h1>Welcome to SyncKing-Kong</h1>
-            </header>
-        {% endif %}
+    <header>
+        <div class="container">
+            <div class="nav-brand">
+                <div class="logo-img">
+                    <a href="#" style="display: block;">
+                        <img src="{{ url_for('static', filename='img/logo_4.png') }}" alt="logo-img">
+                    </a>
+                    <a href="#" class="toggle-icon">
+                        <i class="fa-solid fa-sliders"></i>
+                    </a>
+                </div>
+                <ul class="nav-link">
+                    <li><a href="{{ url_for('homepage') }}">Home</a></li>
+                    <li><a href="{{ url_for('feedback') }}">Feedback</a></li>
+                    <li class="dropdown">
+                        <a href="#" id="appUsageLink">Application Usage</a>
+                        <div class="dropdown-content" id="appUsageContent">
+                            <p>Application Usage details about input parameters, optimization tips, etc. for SyncKing-Kong. This section guides the user on getting the best results from the lip-sync model.</p>
+                            <a href="https://github.com/Mashood-Basharat/App-guide-Documentaion/blob/main/app_guide.md" target="_blank">Learn more</a>
+                        </div>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" id="documentationLink">Documentation</a>
+                        <div class="dropdown-content" id="documentationContent">
+                            <p>Documentation overview on setup, configurations, and model details. Complete documentation to help you understand and utilize SyncKing-Kong.</p>
+                            <a href="https://github.com/Mashood-Basharat/App-guide-Documentaion/blob/main/documentation.md" target="_blank">Learn more</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
     
-        {% block content %}
-        {% endblock %}
-    </div>
+    {% block content %}
 
+    {% endblock %}
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="footer-img"> 
+                        <a href="#" style="display: block;">
+                            <img src="{{ url_for('static', filename='img/logo_4.png') }}" alt="logo-img">
+                        </a>
+                        <p>SyncKing Kong is an AI Lip Syncing Web App inspired by the state of the art lipsyncing model -Wav2lip with several enhanced features.<br>
+                            <strong>Bring your words to life — let our AI make every voice visible.</strong>
+                        </p>
+                    </div>
+                    <div class="footer-icon">
+                        <h3 >We’re available on:</h3>
+                        <ul class="footer-icon-list">
+                            <li><a href="https://github.com/Mashood-Basharat/SyncKing-Kong.git" target="_blank"><i class="fab fa-github"></i></a></li>
+                            <li><a href="https://colab.research.google.com/drive/11lZ_f-56hJBYYTjWwUeM5SUi7pdWkXEu?usp=sharing" target="_blank"><i class="fab fa-google"> <strong>_ colab</strong> </i></a></li>
+                        </ul>
+                    </div>
+                </div> 
+                <div class="col-3">
+                    <div class="footer-content" style="margin-top: 20px;" > 
+                        <h3>Original Notebooks</h3>
+                        <ul class="footer-link">
+                            <li style="margin-top: 10px;"><a href="#">Simplified Version</a></li>
+                            <li style="margin-top: 10px;"><a href="#">Quick Trial Version</a></li>
+                            <li style="margin-top: 10px;"><a href="#">TenDeepfake Version</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="footer-content" style="margin-top: 20px;"> 
+                        <h3>Research Papers</h3>
+                        <ul class="footer-link">
+                            <li style="margin-top: 10px;"><a href="#">Paper 1</a></li>
+                            <li style="margin-top: 10px;"><a href="#">Paper 2</a></li>
+                            <li style="margin-top: 10px;"><a href="#">Paper 3</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
     <script src="/static/js/script.js"></script>
+    
 </body>
 </html>
