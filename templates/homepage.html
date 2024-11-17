@@ -3,24 +3,34 @@
 {% block title %}Setup SyncKing-Kong{% endblock %}
 
 {% block content %}
+<div class="banner">
+    <div class="container">
+        <div class="banner-content">
+            <div class="left-content">
+                <h1>Setup SyncKing-Kong</h1>
+                <p>This will setup the environment for lipsyncing in google colab and install the needed requirements there. After the setup is successfully done, you will be allowed to upload media for performing lipsyncing.</p>
+                <form method="post" action="/">
+                    <button type="submit" class="btn-primary" id="setup-btn">Start SyncKing-Kong Setup</button> 
+                </form>
+                {% if message %}
+                    <div class="message">
+                        <p>{{ message }}</p>
+                    </div>
 
-    <h1>Step 1: Setup SyncKing-Kong</h1>
-    <p>With one button: it's really that easy!</p>
+                    <a href="{{ url_for('upload_media') }}" class="btn-secondary">Go to Upload Page</a>
+                {% endif %}
+            </div>
+            <div class="banner-video">
+                <video autoplay loop muted playsinline style="width: 400px; height: auto;">
+                    <source src="{{ url_for('static', filename='img/video.mp4') }}" type="video/mp4">
+                    Your browser does not support HTML video.
+                  </video>
+            </div>
+        </div>
+    </div>
+</div>
     
-    <form method="post" action="/">
-        <button type="submit" class="btn-primary" id="setup-btn">Start SyncKing-Kong Setup</button> 
-    </form>
     
-    <p>👈 This will setup the environment and install the requirements to perform lip syncing.</p>
-
-    <!-- Anchor link to upload.html -->
-    <p>After setup, proceed to the next step:</p>
-
-    {% if message %}
-        <div class="message">{{ message }}</div>
-    {% endif %}
-    
-    <a href="{{ url_for('upload_media') }}" class="btn-secondary">Go to Upload Page</a>
 
 
 {% endblock %}
