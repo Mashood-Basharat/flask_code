@@ -1,3 +1,27 @@
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleIcon = document.querySelector(".toggle-icon");
+    const navLinks = document.querySelector(".nav-link");
+
+    toggleIcon.addEventListener("click", () => {
+        navLinks.classList.toggle("show-menu");
+    });
+
+});
+
+
+// JavaScript to handle dropdowns if any additional functionality is needed
+document.getElementById('appUsageLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevents page jump
+    document.getElementById('appUsageContent').classList.toggle('show');
+});
+
+document.getElementById('documentationLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevents page jump
+    document.getElementById('documentationContent').classList.toggle('show');
+});
+
+
+
 document.getElementById("setup-btn").addEventListener("click", function() {
     alert("SyncKing-Kong setup initiated.");
     // Call backend API to start setup
