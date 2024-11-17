@@ -8,21 +8,191 @@
 /* Full viewport coverage for html and body */
 html, body {
     height: 100%;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    /* background-color: #f4f4f9; */
+    /* color: #333; */
 }
+/* Typography */
+li{list-style: none;}
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .col {
+    flex: 1;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  /* Responsive column classes */
+  .col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+  .col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .col-3 { flex: 0 0 25%; max-width: 25%; }
+  .col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+  .col-6 { flex: 0 0 50%; max-width: 50%; }
+  .col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+  .col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .col-9 { flex: 0 0 75%; max-width: 75%; }
+  .col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+  .col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+  .col-12 { flex: 0 0 100%; max-width: 100%; }
+/* Heading and text styling */
+h1 {
+    font-size: 45px;
+    font-weight: 800;
+    line-height: 75px;
+    margin-bottom: 20px;
+    color: #19334e;
+}
+h1 {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 75px;
+    margin-bottom: 20px;
+    color: #19334e;
+}
+h3{
+    
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #fff;
+}
+p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #6f6f6f;
+}
+
+/* Input, select, and button styling */
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.btn-primary,.btn-secondary {
+    background-color: #FF9B0A;
+    padding: 12px 24px 12px 24px;
+    font-family: "Poppins", Sans-serif;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-decoration: none;
+    line-height: 26.4px;
+    color: #FFFFFF;
+    border: 1px solid #ff9b0a;
+    border-radius: 75px 75px 75px 75px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.btn-secondary{ 
+    background-color: #fff;
+    border: 1px solid #fff;
+    color:#19334E;
+}
+.btn-primary:hover {
+    background-color: #FFFFFF;
+    color: #19334E;
+    border: 1px solid #ff9b0a;
+}
+
+/* Label and form group styling */
+label {
+    font-weight: bold;
+}
+
+.form-group {
+    /* display: flex;
+    align-items: center; */
+    margin-bottom: 1em;
+}
+
+.form-group label {
+    width: 150px;
+}
+
+.form-group input[type="range"] {
+    flex-grow: 1;
+    /* margin: 0 10px; */
+}
+
+.form-group span {
+    width: 40px;
+    text-align: right;
+}
+
 
 /* Centered and responsive container */
 .container {
     max-width: 1200px; /* Increased width for larger viewports */
     width: 90%; /* Allows flexibility on smaller screens */
-    margin: 20px auto;
-    padding: 20px;
-    background-color: white;
+    margin: 0px auto;
+    /* padding: 20px; */
+    /* background-color: white; */
     border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); */
 }
+
+/* header */
+/* Basic header styling */
+header {
+    background: #19334e;
+    padding: 14px 28px;
+}
+
+.nav-brand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-icon {
+    display: none; /* Hidden by default */
+    font-size: 24px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.logo-img a img {
+    width: 90%;
+}
+
+header ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header ul li {
+    margin-right: 26px;
+}
+
+header ul li a {
+    font-size: 18px;
+    text-decoration: none;
+    color:#C4C7D2;
+}
+header ul li a:hover{
+    color: #6f6f6f;
+}
+header ul li a:active{
+    color: #fff;
+}
+
 
 /* Ensure the main content covers the viewport height */
 .main-content {
@@ -33,64 +203,272 @@ html, body {
     align-items: center;
 }
 
-/* Heading and text styling */
-h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-    color: #343a40;
+.banner{
+    background: #fff8ee;
+    padding: 100px 0;
+    height: 75vh;
+}
+.banner .banner-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.banner .banner-content .left-content p{
+    width: 494px;
+}
+.banner .banner-content .left-content .message{
+    margin: 25px 0;
+    line-height: 1.5;
+    margin-left: 3px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #6f6f6f;
 }
 
-p {
+
+
+/* Additional CSS for dropdowns */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 220px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    border-radius: 4px;
+    color: #19334e;
+    font-size: 16px;
+}
+
+
+/* Dropdown of navbar */
+.dropdown-content p {
+    margin-bottom: 10px;
+    color: #6f6f6f;
+}
+
+.dropdown-content a {
+    color: #FF9B0A;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dropdown-content a:hover {
+    color: #19334e;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/* Upload page */
+.upload-page{
+    padding: 60px 0;
+}
+/* lipsyncing */
+.lipsyncing{
+    padding: 60px 0;
+}
+.lipsyncing .form .form-check{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.lipsyncing .form .form-check input{
+    width: 10%;
+}
+/* result */
+.result{
+    padding: 60px 0;
+}
+
+
+/* Footer */
+footer{
+    background-color: #19334e;
+    padding: 60px 0;
+}
+footer .footer-img p{ width: 350px; margin-top: 20px; color: #fff;}
+footer .footer-content ul{
+    margin: 25px 0;
+}
+.footer-icon-list{
+    display: flex;
+    margin-right: 15px;
+    margin-top: 40px;
+}
+footer .footer-icon ul li{ margin-right: 15px;}
+footer .footer-content ul li a{
+   text-decoration: none;
+   color: #C4C7D2;
+}
+footer .footer-content ul li a:hover{
+    color: #6f6f6f;
+}
+footer .footer-icon ul li a{
+    
+    border: 1px solid #fff;
+    padding: 11px 17px;
+    color: #fff;
+}
+footer .footer-icon ul li a:hover{
+    background-color: #FF9B0A;
+    border: 1px solid #FF9B0A;
+    transition: ease-out 0.5;
+    color: #fff;
+} 
+
+
+
+
+/* Feedback Form Styling */
+.feedback-form {
+    background-color: #fff8ee;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 50px auto;
+}
+
+.feedback-form h1 {
+    color: #19334e;
+    font-size: 2rem;
     margin-bottom: 20px;
+    text-align: center;
+}
+
+.feedback-form p {
+    color: #6f6f6f;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1rem;
     line-height: 1.5;
 }
 
-/* Input, select, and button styling */
-input, select {
+.feedback-form .form-group {
+    margin-bottom: 20px;
+}
+
+.feedback-form label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #19334e;
+}
+
+.feedback-form input[type="text"],
+.feedback-form input[type="email"],
+.feedback-form textarea {
     width: 100%;
     padding: 10px;
-    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 1em;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
+.feedback-form textarea {
+    resize: vertical;
+}
+
+.feedback-form input[type="range"] {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.feedback-form #ratingValue {
+    font-size: 1rem;
+    color: #ff9b0a;
+    font-weight: bold;
+}
+
+.feedback-form .btn-primary {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #FF9B0A;
     border: none;
-    border-radius: 5px;
+    color: #fff;
     font-size: 1.2em;
+    font-weight: 600;
+    border-radius: 75px;
+    text-align: center;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.btn-primary:hover {
-    background-color: #0056b3;
+.feedback-form .btn-primary:hover {
+    background-color: #19334E;
+    color: #fff;
 }
 
-/* Label and form group styling */
-label {
-    font-weight: bold;
+/* Responsive adjustments for feedback form */
+@media only screen and (max-width: 600px) {
+    .feedback-form {
+        padding: 20px;
+    }
+
+    .feedback-form h1 {
+        font-size: 1.5rem;
+    }
+
+    .feedback-form p {
+        font-size: 0.9rem;
+    }
+
+    .feedback-form .btn-primary {
+        font-size: 1em;
+    }
 }
 
-.form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-}
 
-.form-group label {
-    width: 150px;
-}
 
-.form-group input[type="range"] {
-    flex-grow: 1;
-    margin: 0 10px;
-}
 
-.form-group span {
-    width: 40px;
-    text-align: right;
+/* Responsive styles */
+@media only screen and (max-width: 991px) {
+    .nav-brand{
+        flex-direction: column;
+        align-items: start;
+    }
+    .logo-img{
+        display: flex;
+    width: 100%;
+    justify-content: space-between;
+    }
+    .toggle-icon {
+        display: block; 
+    }
+    header ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+        background: #19334e;
+        align-items: start;
+    }
+    header ul li {
+        margin: 13px 0;
+    }
+    header ul.show-menu {
+        display: flex; /* Show menu when toggle is active */
+        background: #ff9b0a;
+        width: 100%;
+        padding: 30px 80px;
+        position: absolute;
+        transition: height 0.4s ease, opacity 0.4s ease;
+        bottom: -74px;
+        right: 0;
+    }
+    header ul li {
+        margin: 10px 0; 
+        text-align:center;
+    }
 }
