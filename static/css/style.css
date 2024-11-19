@@ -167,7 +167,7 @@ header {
 }
 
 .logo-img a img {
-    width: 90%;
+    width: 35%;
 }
 
 header ul {
@@ -206,7 +206,6 @@ header ul li a:active{
 .banner{
     background: #fff8ee;
     padding: 100px 0;
-    height: 75vh;
 }
 .banner .banner-content{
     display: flex;
@@ -296,9 +295,12 @@ footer{
     background-color: #19334e;
     padding: 60px 0;
 }
-footer .footer-img p{ width: 350px; margin-top: 20px; color: #fff;}
+footer .footer-img img{
+    width: 45%;
+}
+footer .footer-img p{ width: 450px; margin-top: 20px; color: #fff;}
 footer .footer-content ul{
-    margin: 25px 0;
+    margin: 35px 0;
 }
 .footer-icon-list{
     display: flex;
@@ -306,6 +308,7 @@ footer .footer-content ul{
     margin-top: 40px;
 }
 footer .footer-icon ul li{ margin-right: 15px;}
+.footer-content{ padding-top: 50px;}
 footer .footer-content ul li a{
    text-decoration: none;
    color: #C4C7D2;
@@ -464,11 +467,49 @@ footer .footer-icon ul li a:hover{
         padding: 30px 80px;
         position: absolute;
         transition: height 0.4s ease, opacity 0.4s ease;
-        bottom: -74px;
+        bottom: 183px;
         right: 0;
     }
     header ul li {
         margin: 10px 0; 
         text-align:center;
     }
+
+
+    .banner .banner-content{
+        flex-direction: column;
+    }
+    .banner .banner-content .left-content{
+        margin-bottom: 50px;
+    }
+
+    .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .col-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+    footer .footer-img img {
+        width: 30%;
+    }
 }
+@media only screen and (max-width: 480px){
+     h1 {
+        font-size: 30px;
+        margin-bottom: 11px;
+    }
+    p { font-size: 14px;}
+    .banner .banner-content .left-content p,footer .footer-img p {
+        width: auto;
+    }
+    .col-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .footer-content {
+        padding-top: 40px;
+    }
+}
+
