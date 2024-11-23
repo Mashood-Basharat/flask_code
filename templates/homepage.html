@@ -8,28 +8,28 @@
         <div class="banner-content">
             <div class="left-content">
                 <h1>Setup SyncKing-Kong</h1>
-                <p>This will setup the environment for lipsyncing in google colab and install the needed requirements there. After the setup is successfully done, you will be allowed to upload media for performing lipsyncing.</p>
-                <form method="post" action="/">
+                <p>This will set up the environment for lipsyncing in Google Colab and install the needed requirements there. After the setup is successfully done, you will be allowed to upload media for performing lipsyncing.</p>
+                
+                <!-- Form will now submit via AJAX -->
+                <form id="setup-form" method="post" action="/" onsubmit="return false;">
                     <button type="submit" class="btn-primary" id="setup-btn">Start SyncKing-Kong Setup</button> 
                 </form>
-                {% if message %}
-                    <div class="message">
-                        <p>{{ message }}</p>
-                    </div>
-
-                    <a href="{{ url_for('upload_media') }}" class="btn-secondary">Go to Upload Page</a>
-                {% endif %}
+                
+                <!-- Dynamically show message and link -->
+                <div id="setup-message" class="message" style="display: none;">
+                    <p></p>
+                </div>
+                <a href="{{ url_for('upload_media') }}" id="upload-link" class="btn-secondary" style="display: none;">Go to Upload Page</a>
             </div>
             <div class="banner-video">
                 <video autoplay loop muted playsinline style="width: 400px; height: auto;">
                     <source src="{{ url_for('static', filename='img/video.mp4') }}" type="video/mp4">
                     Your browser does not support HTML video.
-                  </video>
+                </video>
             </div>
         </div>
     </div>
 </div>
-    
     
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -40,20 +40,19 @@
                 type: "POST", // Send a POST request
                 success: function (response) {
                     // Display the success message
-                    $('#setup-message').text("Setup complete! Environment has been successfully set up.")
-                                       .fadeIn();
+                    $('#setup-message p').text(response.message);
+                    $('#setup-message').fadeIn();
 
                     // Show the link to the upload page
                     $('#upload-link').fadeIn();
                 },
                 error: function () {
-                    $('#setup-message').text("An error occurred during the setup process.")
-                                       .fadeIn();
+                    $('#setup-message p').text("An error occurred during the setup process.");
+                    $('#setup-message').fadeIn();
                 }
             });
         });
     });
 </script>
-
 
 {% endblock %}
