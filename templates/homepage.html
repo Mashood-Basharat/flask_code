@@ -31,6 +31,29 @@
 </div>
     
     
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#setup-btn').click(function () {
+            $.ajax({
+                url: "/", // Route to handle the setup
+                type: "POST", // Send a POST request
+                success: function (response) {
+                    // Display the success message
+                    $('#setup-message').text("Setup complete! Environment has been successfully set up.")
+                                       .fadeIn();
+
+                    // Show the link to the upload page
+                    $('#upload-link').fadeIn();
+                },
+                error: function () {
+                    $('#setup-message').text("An error occurred during the setup process.")
+                                       .fadeIn();
+                }
+            });
+        });
+    });
+</script>
 
 
 {% endblock %}
