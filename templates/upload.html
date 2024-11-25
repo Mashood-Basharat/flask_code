@@ -6,46 +6,22 @@
 
 <div class="upload-page">
     <div class="container">
+        
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
                 <div class="upload-content">
-                    <h1>Upload Video and Audio for SyncKing-Kong</h1>
-                    <p>Please upload your video file below:</p>
+                    <h1>Upload Video and Audio Files</h1>
+                    <p>Please upload your video and audio files below:</p>
                 </div>
                 <form method="POST" action="{{ url_for('upload_media') }}" enctype="multipart/form-data">
                     <div class="upload-section" style="padding-bottom: 20px;">
                         <h2>Upload Video</h2>
                         <input type="file" name="video" accept="video/mpeg,video/mp4" required>
                     </div>
-                    <p>
-                        Please note that you can use only one feature at a time: <strong>Upload</strong> or <strong>Record</strong>. 
-                        To revert the last action, <em>reload the page</em>.
-                    </p>
                     <div class="upload-section" style="padding-bottom: 20px;">
-                        <h2>Upload or Record Audio</h2>
-                        <input type="file" id="audio-upload" name="audio" accept="audio/mpeg, audio/mp3">
-                        <p>OR</p>
-                        <button type="button" id="start-recording" class="btn-primary">Record Audio</button>
-                        <button type="button" id="stop-recording" class="btn-primary" disabled>Stop Recording</button>
-                        <audio id="audio-preview" controls style="display: none; margin-top: 10px;"></audio>
-                        <input type="hidden" id="recorded-audio" name="recorded_audio">
-                        <div id="recording-alert" style="display: none; margin-top: 10px; color: red;">
-                            Voice recording has been started. Recording time: <span id="recording-time">0</span> seconds.
-                        </div>
-                        <div id="trimming-section" style="display: none; margin-top: 20px;">
-                            <h3>Trim Your Recording</h3>
-                            <p>Adjust the start and end times below:</p>
-                            <label for="trim-start">Start:</label>
-                            <input type="range" id="trim-start" min="0" max="30" value="0">
-                            <span id="start-time">0</span> seconds
-                            <br>
-                            <label for="trim-end">End:</label>
-                            <input type="range" id="trim-end" min="0" max="30" value="30">
-                            <span id="end-time">30</span> seconds
-                            <br>
-                            <button type="button" id="apply-trim" class="btn-primary">Apply Trim</button>
-                        </div>
+                        <h2>Upload Audio</h2>
+                        <input type="file" name="audio" accept="audio/mpeg, audio/mp3">
                     </div>
                     <div>
                         <input type="submit" value="Upload" class="btn-primary" style="width: 25%;">
@@ -57,134 +33,22 @@
     </div>
 </div>
 
-<script>
-    const audioUpload = document.getElementById('audio-upload');
-    const startButton = document.getElementById('start-recording');
-    const stopButton = document.getElementById('stop-recording');
-    const audioPreview = document.getElementById('audio-preview');
-    const recordedAudioInput = document.getElementById('recorded-audio');
-    const recordingAlert = document.getElementById('recording-alert');
-    const recordingTime = document.getElementById('recording-time');
-    const trimmingSection = document.getElementById('trimming-section');
-    const trimStart = document.getElementById('trim-start');
-    const trimEnd = document.getElementById('trim-end');
-    const startTimeLabel = document.getElementById('start-time');
-    const endTimeLabel = document.getElementById('end-time');
-    const applyTrimButton = document.getElementById('apply-trim');
-    let mediaRecorder;
-    let audioChunks = [];
-    let recordingInterval;
-    let recordingTimeout;
-    let secondsElapsed = 0;
+    
 
-    // Disable upload when recording starts
-    startButton.addEventListener('click', async () => {
-        audioUpload.disabled = true; // Disable audio upload
-        audioChunks = [];
-        secondsElapsed = 0; // Reset the counter
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.start();
+    
 
-        mediaRecorder.addEventListener('dataavailable', (event) => {
-            audioChunks.push(event.data);
-        });
-
-        mediaRecorder.addEventListener('stop', () => {
-            const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' });
-            const audioUrl = URL.createObjectURL(audioBlob);
-            audioPreview.src = audioUrl;
-            audioPreview.style.display = 'block';
-            trimmingSection.style.display = 'block';
-
-            // Set range max based on recorded duration
-            trimEnd.max = secondsElapsed;
-            trimEnd.value = secondsElapsed;
-
-            // Convert audio blob to base64
-            const reader = new FileReader();
-            reader.onload = function () {
-                recordedAudioInput.value = reader.result.split(',')[1]; // Store base64 data in hidden input
-            };
-            reader.readAsDataURL(audioBlob);
-        });
-
-        // Start the counter and show the alert
-        recordingAlert.style.display = 'block';
-        recordingTime.textContent = secondsElapsed;
-        recordingInterval = setInterval(() => {
-            secondsElapsed += 1;
-            recordingTime.textContent = secondsElapsed;
-        }, 1000);
-
-        // Stop recording after 30 seconds automatically
-        recordingTimeout = setTimeout(() => {
-            stopRecording();
-        }, 30000);
-
-        startButton.disabled = true;
-        stopButton.disabled = false;
-    });
-
-    // Disable recording buttons when an audio file is uploaded
-    audioUpload.addEventListener('change', () => {
-        startButton.disabled = true;
-        stopButton.disabled = true;
-        recordingAlert.style.display = 'none';
-        if (mediaRecorder && mediaRecorder.state === 'recording') {
-            stopRecording();
-        }
-    });
-
-    stopButton.addEventListener('click', stopRecording);
-
-    function stopRecording() {
-        if (mediaRecorder && mediaRecorder.state === 'recording') {
-            mediaRecorder.stop();
-        }
-        clearInterval(recordingInterval);
-        clearTimeout(recordingTimeout);
-        recordingAlert.style.display = 'none';
-        startButton.disabled = false;
-        stopButton.disabled = true;
-    }
-
-    // Handle trimming
-    trimStart.addEventListener('input', () => {
-        startTimeLabel.textContent = trimStart.value;
-        if (parseInt(trimStart.value) > parseInt(trimEnd.value)) {
-            trimEnd.value = trimStart.value;
-            endTimeLabel.textContent = trimEnd.value;
-        }
-    });
-
-    trimEnd.addEventListener('input', () => {
-        endTimeLabel.textContent = trimEnd.value;
-        if (parseInt(trimEnd.value) < parseInt(trimStart.value)) {
-            trimStart.value = trimEnd.value;
-            startTimeLabel.textContent = trimStart.value;
-        }
-    });
-
-    applyTrimButton.addEventListener('click', () => {
-        const start = parseInt(trimStart.value);
-        const end = parseInt(trimEnd.value);
-        if (start >= end) {
-            alert('Invalid trimming range.');
-            return;
-        }
-        // Generate trimmed audio
-        const trimmedBlob = new Blob(audioChunks.slice(start, end), { type: 'audio/mp3' });
-        const audioUrl = URL.createObjectURL(trimmedBlob);
-        audioPreview.src = audioUrl;
-
-        // Update hidden input with trimmed audio
-        const reader = new FileReader();
-        reader.onload = function () {
-            recordedAudioInput.value = reader.result.split(',')[1]; // Update base64 data
-        };
-        reader.readAsDataURL(trimmedBlob);
-    });
-</script>
+    <div id="message">
+        {% if message %}
+            <div class="message">{{ message }}</div>
+            <!-- After successful upload, redirect to /lipsyncing with file paths -->
+            {% if message == "Files uploaded successfully!" %}
+                <script>
+                    const videoFile = "{{ video_file }}";
+                    const audioFile = "{{ audio_file }}";
+                    window.location.href = "{{ url_for('lipsyncing') }}?video_file=" + encodeURIComponent(videoFile) + "&audio_file=" + encodeURIComponent(audioFile);
+                </script>
+            {% endif %}
+        {% endif %}
+    </div>
 
 {% endblock %}
