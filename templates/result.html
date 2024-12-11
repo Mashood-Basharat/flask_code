@@ -28,9 +28,11 @@
 
 <script>
     document.getElementById('downloadBtn').addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent the default download action to allow the alert
-        alert('Your video has been downloaded successfully!');
-        window.location.href = '{{ url_for('feedback') }}'; // Redirect to feedback page
+        alert('Your video is downloading...');
+        setTimeout(function () {
+            window.location.href = '{{ url_for('feedback') }}'; // Redirect to feedback page
+        }, 3000); // Give the browser time to download before redirecting
     });
 </script>
+
 {% endblock %}
