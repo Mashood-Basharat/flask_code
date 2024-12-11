@@ -15,10 +15,10 @@
                         <source src="{{ url_for('static', filename='output.mp4') }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
-                    <div style="margin-top: 40px;">
+                    <div style="margin-top: 40px; display: flex; gap: 15px;">
                         <a href="{{ url_for('lipsyncing') }}" class="btn btn-primary">Back to Lip-syncing</a>
+                        <a href="{{ url_for('static', filename='output.mp4') }}" download class="btn btn-primary" id="downloadBtn">Download Video</a>
                     </div>
-                    
                 </div>
             </div>
             <div class="col-1"></div>
@@ -26,5 +26,11 @@
     </div>
 </div>
 
-
+<script>
+    document.getElementById('downloadBtn').addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default download action to allow the alert
+        alert('Your video has been downloaded successfully!');
+        window.location.href = '{{ url_for('feedback') }}'; // Redirect to feedback page
+    });
+</script>
 {% endblock %}
