@@ -46,7 +46,7 @@ document.getElementById("download-btn").addEventListener("click", function() {
 });
 
 // Handles the progress bar functionality
-function update() {
+function progress_bar() {
     // Prevent immediate form submission
     const form = document.getElementById("uploadForm");
 
