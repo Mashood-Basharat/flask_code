@@ -50,11 +50,11 @@ function update() {
     // Prevent immediate form submission
     const form = document.getElementById("uploadForm");
 
-    // Make the progress bar visible
-    document.getElementById("Progress_Status").style.display = "block";
+    // Show the full-page overlay with the progress bar
+    document.getElementById("fullPageOverlay").style.display = "block";
 
     let element = document.getElementById("myprogressBar");
-    let width = 2; // Start with 2% progress
+    let width = 0; // Start with 0% progress
     const interval = 100; // Slower progress interval
     const identity = setInterval(scene, interval);
 
