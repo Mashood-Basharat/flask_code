@@ -6,7 +6,7 @@
 
 <div class="upload-page">
     <div class="container">
-        
+
         <div class="row">
             <div class="col-1"></div>
             <div class="col-10">
@@ -14,7 +14,8 @@
                     <h1>Upload Video and Audio Files</h1>
                     <p>Please upload your video and audio files below:</p>
                 </div>
-                <form method="POST" action="{{ url_for('upload_media') }}" enctype="multipart/form-data">
+                <form method="POST" id="uploadForm" action="{{ url_for('upload_media') }}"
+                    enctype="multipart/form-data">
                     <div class="upload-section" style="padding-bottom: 20px;">
                         <h2>Upload Video</h2>
                         <input type="file" name="video" accept="video/mpeg,video/mp4" required>
@@ -24,31 +25,36 @@
                         <input type="file" name="audio" accept="audio/mpeg, audio/mp3">
                     </div>
                     <div>
-                        <input type="submit" value="Upload" class="btn-primary" style="width: 25%;">
+                        <input onclick="update()" type="submit" value="Upload" class="btn-primary" style="width: 25%;">
                     </div>
                 </form>
+
+                <div id="Progress_Status">
+                    <div id="myprogressBar"></div>
+                </div>
+
             </div>
             <div class="col-1"></div>
         </div>
     </div>
 </div>
 
-    
 
-    
 
-    <div id="message">
-        {% if message %}
-            <div class="message">{{ message }}</div>
-            <!-- After successful upload, redirect to /lipsyncing with file paths -->
-            {% if message == "Files uploaded successfully!" %}
-                <script>
-                    const videoFile = "{{ video_file }}";
-                    const audioFile = "{{ audio_file }}";
-                    window.location.href = "{{ url_for('lipsyncing') }}?video_file=" + encodeURIComponent(videoFile) + "&audio_file=" + encodeURIComponent(audioFile);
-                </script>
-            {% endif %}
-        {% endif %}
-    </div>
+
+
+<div id="message">
+    {% if message %}
+    <div class="message">{{ message }}</div>
+    <!-- After successful upload, redirect to /lipsyncing with file paths -->
+    {% if message == "Files uploaded successfully!" %}
+    <script>
+        const videoFile = "{{ video_file }}";
+        const audioFile = "{{ audio_file }}";
+        window.location.href = "{{ url_for('lipsyncing') }}?video_file=" + encodeURIComponent(videoFile) + "&audio_file=" + encodeURIComponent(audioFile);
+    </script>
+    {% endif %}
+    {% endif %}
+</div>
 
 {% endblock %}

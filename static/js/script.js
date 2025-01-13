@@ -44,3 +44,28 @@ document.getElementById("download-btn").addEventListener("click", function() {
     // Call backend API to trigger video download
     alert("Downloading processed video...");
 });
+
+// Handles the progress bar functionality
+function update() {
+    // Prevent immediate form submission
+    const form = document.getElementById("uploadForm");
+
+    // Make the progress bar visible
+    document.getElementById("Progress_Status").style.display = "block";
+
+    let element = document.getElementById("myprogressBar");
+    let width = 2; // Start with 2% progress
+    const interval = 100; // Slower progress interval
+    const identity = setInterval(scene, interval);
+
+    function scene() {
+        if (width >= 100) {
+            clearInterval(identity);
+            // Submit the form programmatically after progress is complete
+            form.submit();
+        } else {
+            width += 2; // Increment progress
+            element.style.width = width + '%';
+        }
+    }
+}

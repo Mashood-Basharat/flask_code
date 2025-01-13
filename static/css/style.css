@@ -289,6 +289,18 @@ header ul li a:active{
     padding: 60px 0;
 }
 
+/* progress bar */
+#Progress_Status {
+    width: 50%;
+    background-color: #ddd;
+    display: none;
+  }
+  #myprogressBar {
+    width: 2%;
+    height: 20px;
+    background-color: #4CAF50;
+  }
+
 
 /* Footer */
 footer{
