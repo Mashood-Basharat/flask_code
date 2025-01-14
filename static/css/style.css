@@ -289,7 +289,9 @@ header ul li a:active{
     padding: 60px 0;
 }
 
-/* Full-page overlay for progress bar*/
+
+
+/* Full-page overlay for progress bar */
 #fullPageOverlay {
     display: none; /* Initially hidden */
     position: fixed;
@@ -308,35 +310,49 @@ header ul li a:active{
     left: 50%;
     transform: translate(-50%, -50%);
     width: 50%;
+    height: 50px;
     background-color: rgb(25, 49, 69); /* Same as header/footer for consistency */
-    border-radius: 10px;
+    border-radius: 25px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border: 2px solid rgb(254, 148, 9); /* Accent border using button color */
-}
-
-/* Progress bar */
-#myprogressBar {
-    width: 0%;
-    height: 30px;
-    background-color: rgb(254, 148, 9); /* Button color for progress fill */
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    color: rgb(25, 49, 69); /* Contrast text color matching header/footer */
-    border-radius: 10px;
+}
+
+/* Pulsing progress bar */
+#myprogressBar {
+    width: 90%;
+    height: 30px;
+    background-color: rgb(254, 148, 9); /* Button color for the bar */
+    border-radius: 15px;
+    animation: pulse 1.5s infinite; /* Pulsing animation */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Progress text */
 #progressText {
-    position: absolute;
-    width: 100%;
-    text-align: center;
     font-weight: bold;
     font-size: 18px;
     color: rgb(25, 49, 69); /* Same as header/footer for consistency */
 }
+
+/* Pulsing animation */
+@keyframes pulse {
+    0% {
+        transform: scaleX(1);
+    }
+    50% {
+        transform: scaleX(1.1); /* Slightly enlarge */
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
 
 
 /* Footer */

@@ -12,8 +12,7 @@
                     <h2>Select inputs</h2>
                 </div>
                 <div class="form">
-                    <form method="POST"
-                        action="{{ url_for('lipsyncing', video_file=video_file, audio_file=audio_file) }}">
+                    <form method="POST" id="uploadForm" action="{{ url_for('lipsyncing', video_file=video_file, audio_file=audio_file) }}">
                         <div class="form-group">
                             <label for="video_file">Video File:</label>
                             <input type="text" name="video_file" value="{{ video_file }}" readonly class="form-control">
@@ -131,7 +130,7 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button onclick="progress_bar()" type="submit" class="btn btn-primary mt-3" id="process-btn"
+                        <button onclick="startProgress()" type="submit" class="btn btn-primary mt-3" id="process-btn"
                             style="margin-top: 22px;">Start Lip-syncing</button>
                     </form>
 
@@ -139,7 +138,7 @@
                     <div id="fullPageOverlay">
                         <div id="progressContainer">
                             <div id="myprogressBar">
-                                <span id="progressText">lipsyncing in progress</span>
+                                <span id="progressText">Lipsyncing in progress</span>
                             </div>
                         </div>
                     </div>
