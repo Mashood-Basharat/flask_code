@@ -45,16 +45,27 @@ document.getElementById("download-btn").addEventListener("click", function() {
     alert("Downloading processed video...");
 });
 
-// Starts the pulsing progress bar
-function startProgress() {
+// Handles the progress bar functionality
+function progress_bar() {
     // Prevent immediate form submission
     const form = document.getElementById("uploadForm");
 
-    // Show the full-page overlay with the pulsing progress bar
+    // Show the full-page overlay with the progress bar
     document.getElementById("fullPageOverlay").style.display = "block";
 
-    // Programmatically submit the form
-    setTimeout(() => {
-        form.submit();
-    }, 500); // Slight delay before submitting (can be adjusted if needed)
+    let element = document.getElementById("myprogressBar");
+    let width = 0; // Start with 0% progress
+    const interval = 100; // Slower progress interval
+    const identity = setInterval(scene, interval);
+
+    function scene() {
+        if (width >= 100) {
+            clearInterval(identity);
+            // Submit the form programmatically after progress is complete
+            form.submit();
+        } else {
+            width += 2; // Increment progress
+            element.style.width = width + '%';
+        }
+    }
 }
